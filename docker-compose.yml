@@ -1,0 +1,18 @@
+version: '3.4'
+
+services:
+  calculojurosapi:
+    image: ${DOCKER_REGISTRY-}calculojurosapi
+    build:
+      context: .
+      dockerfile: CalculoJurosAPI/Dockerfile
+    ports:
+      - 44346:3306
+
+  taxajurosapi:
+    image: ${DOCKER_REGISTRY-}taxajurosapi
+    build:
+      context: .
+      dockerfile: TaxaJurosAPI/Dockerfile
+    ports: 
+      - 44302:80

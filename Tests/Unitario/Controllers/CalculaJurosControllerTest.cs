@@ -13,12 +13,12 @@ namespace Unitario.Controllers
     {
         private CalculaJurosController _controller;
         private Fixture _fixture;
-        private Mock<IReqServices> _reqServices;
+        private Mock<IJurosComposto> _reqServices;
 
         [SetUp]
         public void SetUp()
         {
-            _reqServices = new Mock<IReqServices>();
+            _reqServices = new Mock<IJurosComposto>();
 
             _reqServices.Setup(x => x.GetTaxaJuros(It.IsAny<string>())).ReturnsAsync(0.01m);
             _controller = new CalculaJurosController(_reqServices.Object, _iconfiguration.Build());

@@ -26,8 +26,8 @@ namespace CalculoJurosAPI.Controllers
         [HttpGet("showmethecode")]
         public ActionResult ObtemLinkRepositorioGitHub()
         {
-            var teste = _configuration.GetValue<string>("Endpoints:UrlGithub");
-            return Ok(_configuration.GetValue<string>("Endpoints:UrlGithub"));
+            var gitRepository = _configuration.GetValue<string>("Endpoints:UrlGithub");
+            return Ok(gitRepository);
         }
     }
 }

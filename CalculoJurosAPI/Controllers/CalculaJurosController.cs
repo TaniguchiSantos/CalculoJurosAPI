@@ -10,12 +10,12 @@ namespace CalculoJurosAPI.Controllers
     [ApiController]
     public class CalculaJurosController : Controller
     {
-        private readonly IReqServices _reqServices;
+        private readonly IJurosComposto _jurosComposto;
         private readonly IConfiguration _configuration;
 
-        public CalculaJurosController(IReqServices reqServices, IConfiguration configuration)
+        public CalculaJurosController(IJurosComposto jurosComposto, IConfiguration configuration)
         {
-            _reqServices = reqServices;
+            _jurosComposto = jurosComposto;
             _configuration = configuration;
         }
 
@@ -50,11 +50,9 @@ namespace CalculoJurosAPI.Controllers
             if (meses <= 0 || valorInicial < 0 || meses.Equals(null) || valorInicial.Equals(null))
                 return BadRequest();
 
-            var taxaJuros = await _reqServices.GetTaxaJuros(_configuration.GetValue<string>("Endpoints:UrlTaxaJuros"));
+            //var taxaJuros = await _reqServices.GetTaxaJuros(_configuration.GetValue<string>("Endpoints:UrlTaxaJuros"));
 
-            string valorFinal = ((double)valorInicial * Math.Pow(1 + (double)taxaJuros, meses)).ToString("0.00");
-
-            return Ok(valorFinal);
+            return Ok(_jurosComposto.CalculoDeJuros(valorInicial, meses));
         }
     }
 }

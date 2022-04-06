@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using System;
 
 namespace CalculoJurosAPI
 {
@@ -22,11 +23,22 @@ namespace CalculoJurosAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton(Configuration);
-            services.AddScoped<IReqServices, ReqServices>();
+            services.AddScoped<IJurosComposto, JurosCompostoImplementation>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "API Calculo de Juros", Version = "v1" });
+                c.SwaggerDoc("v1",
+                    new OpenApiInfo
+                    {
+
+                        Title = "API de Juros Compostos e Repositório do Github",
+                        Description = "Projeto .NET para calcular juros compostos e mostrar o link do repositório no Github",
+                        Contact = new OpenApiContact
+                        {
+                            Name = "Taniguchi Santos",
+                            Url = new Uri("https://github.com/TaniguchiSantos")
+                        }
+                    });
 
             });
             services.AddCors();

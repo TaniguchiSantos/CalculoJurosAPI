@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using System;
 
 namespace TaxaJurosAPI
 {
@@ -22,7 +23,17 @@ namespace TaxaJurosAPI
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "API Taxa de Juros", Version = "v1" });
+                c.SwaggerDoc("v1",
+                  new OpenApiInfo
+                  {
+                      Title = "API de Taxa de Juros",
+                      Description = "Projeto .NET para retornar a taxa de juros",
+                      Contact = new OpenApiContact
+                      {
+                          Name = "Taniguchi Santos",
+                          Url = new Uri("https://github.com/TaniguchiSantos")
+                      }
+                  });
 
             });
 
