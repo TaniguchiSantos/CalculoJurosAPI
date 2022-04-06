@@ -18,7 +18,7 @@ namespace CalculoJurosAPI.Utils
 
         public string CalculoDeJuros(decimal valorInicial, int meses)
         {
-            string valorFinal = ((double)valorInicial * Math.Pow(1 + 0.01, meses)).ToString("0.00");
+            string valorFinal = ((double)valorInicial * Math.Pow(1 + 0.01, meses)).ToString("0.00").Replace('.', ',');
 
             return valorFinal;
         }

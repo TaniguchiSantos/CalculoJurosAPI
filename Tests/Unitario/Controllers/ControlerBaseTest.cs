@@ -15,8 +15,8 @@ namespace Unitario.Controllers
 
             _iconfiguration.AddInMemoryCollection(new Dictionary<string, string>
                 {
-                      {"Endpoints:UrlTaxaJuros", "https://localhost:49159/taxaJuros"},
-                      {"Endpoints:UrlGithub", "https://github.com/silvasobrinho/API-Calculo-de-Juros"},
+                      {"Endpoints:UrlTaxaJuros", "https://localhost:58905/taxaJuros"},
+                      {"Endpoints:UrlGithub", "https://github.com/TaniguchiSantos/CalculoJurosAPI"},
                 });
         }
     }
